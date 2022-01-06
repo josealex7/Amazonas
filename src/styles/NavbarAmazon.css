@@ -1,0 +1,64 @@
+.navbar-principal{
+    background-color: #131921;
+    color: white;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.links{
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-principal ul{
+    display: flex;
+    margin: 5px;
+    list-style: none;
+    align-items: center;
+    margin-left: -40px;
+}
+
+.navbar-principal li{
+    list-style: none;
+    display: inline-block;
+    margin:0px 12px;
+}
+
+.navbar-principal label{
+    padding: 6px 10px;
+}
+
+.contenedor-direccion{
+    margin: 3px 0px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.bold-label{
+    font-weight: bold;
+    position: relative;
+    bottom: 5px;
+    right: 10px;
+}
+
+.subMenu{
+    background-color: #242F3E;
+    padding: 5px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.subMenu ul{
+    margin: 0;
+    margin-left: -20px;
+    display: flex;
+}
+
+.subMenu li{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 6px 20px;
+}
+

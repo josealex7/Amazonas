@@ -1,0 +1,109 @@
+html, body {
+    margin: 0px;
+}
+
+.contenedorGoogle{
+    width: 48%;
+    height: 40px;
+    text-align: left;
+    border: 1px solid rgba(163, 36, 36, 0.89);
+    background-color: rgb(211, 40, 40);
+    margin-right: 4px;
+    
+}
+
+.contenedor-logo-login{
+    text-align: center;
+    margin:20px 0px;
+}
+
+.contenedorFacebook{
+    width: 48%;
+    height: 40px;
+    text-align: left;
+    border: 1px solid rgb(16, 16, 223);
+    background-color: #3D56B2;
+    margin-left: 4px;
+}
+
+.google-icon{
+background-color: white;
+height: 40px;
+position: relative;
+}
+
+.textoAcceso{
+    position: relative;
+    top: 8px;
+    font-size: 18px;
+    color: white;
+}
+
+
+
+.contenedorLogin{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.contenedorPrincipal{
+    padding: 0px 20px ;
+}
+
+.contenedorForm{
+    background-color: #E6E6E6;
+    max-width: 500px;
+    padding: 40px;
+    margin: 40px auto;
+    border-radius: 10px;
+    border: 3px solid #dad9d9a4;
+    box-shadow: 5px 8px 20px 3px #b6b6b6
+}
+
+.google-icon-wrapper{
+    display: inline-flex;
+    width: 100%;
+    
+}
+
+.contenedorTexto{
+    width: 100%;
+    text-align: center;
+}
+
+.linksRegistrate{
+    text-decoration: none;
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+@media only screen and (max-width: 610px){
+    
+    
+    .contenedorGoogle{
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+    
+    .contenedorFacebook{
+        width: 100%;
+        margin-top: 5px;
+        margin-left: 0px;
+    }
+}
+
+@media only screen and (max-width: 330px){
+    .textoAcceso{
+        top: 10px;
+        font-size: 15px;
+    }
+    
+    .textoAccesoF{
+        top: 12px;
+        font-size: 15px;
+    }
+}

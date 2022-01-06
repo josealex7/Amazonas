@@ -1,0 +1,27 @@
+.footer{
+    background-color: #131921;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.footer-div{
+    display: flex;
+    margin: auto;
+    text-align: left;
+}
+
+.footer-div-center{
+    display: inline-block;
+    margin-top: 20px;
+}
+.footer li{
+    list-style: none;
+    padding-bottom: 5px;
+}
+
+.li-bold{
+    font-weight: bold;
+}
