@@ -4,6 +4,8 @@ import {
 } from 'react-router-dom';
 import Devoluciones from '../components/Devoluciones';
 import Usuario from '../components/Usuario';
+import {Employees} from '../components/Employees'
+import {List}  from '../components/List';
 
 export const DashboardRoutes = () => {
     return ( 

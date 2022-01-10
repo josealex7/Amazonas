@@ -6,10 +6,20 @@ import '../styles/NavbarAmazon.css'
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import User from '../hooks/User';
+import UseLocation from '../hooks/UseLocation';
+import { google } from 'google-maps';
 
 const NavbarAmazon = () => {
 
+    const [address, getAdd] = UseLocation();
+
     const useUser = User();
+
+    const getAddress= () =>{
+        getAdd()
+        let miDireccion = new google.maps.LatLng(address.latitude, address.longitude);
+        console.log(miDireccion)
+    }
 
     return (
         <div>
@@ -24,10 +34,17 @@ const NavbarAmazon = () => {
                         <div>
                             <div>
                                 <label>Hola</label>
-                                <div className='contenedor-direccion'>
-                                    <img src="https://img.icons8.com/material/24/FFFFFF/worldwide-location--v1.png"/>
-                                    <label>Elige tu dirección</label>
-                                </div>
+                                <button onClick={getAddress}>
+                                    <div className='contenedor-direccion'>
+                                        <img src="https://img.icons8.com/material/24/FFFFFF/worldwide-location--v1.png"/>
+                                        <label> {
+                                                address.latitude!==0 && address.longitude!==0? 
+                                                address.longitude + " - "+address.latitude:
+                                                "Elige tu dirección"
+                                                }
+                                        </label>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </li>
@@ -54,7 +71,7 @@ const NavbarAmazon = () => {
             </header>
             <div className='subMenu'>
                 <ul>
-                    <li>
+                    <li >
                     <MenuIcon />
                         Todo
                     </li>
@@ -69,6 +86,7 @@ const NavbarAmazon = () => {
                     </li>
                 </ul>
             </div>
+            
         </div>
     )
 }

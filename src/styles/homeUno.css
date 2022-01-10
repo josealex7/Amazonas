@@ -1,0 +1,22 @@
+.categoriasProduct{
+    background-image: url("https://res.cloudinary.com/dxnn5sbsz/image/upload/v1641745412/amazonas/61neQqvKS0L._SX3000__bybwqj.jpg");
+    background-position: initial;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 30px;
+    background-color: rgb(238, 238, 238);
+
+}
+
+.subCategoriaProduct{
+    margin-top: 16%;
+}
+
+.imagenCategoria{
+    width: 300px;
+    height: 210px;
+}
+
+.textoCategoria{
+    color:'black'
+}

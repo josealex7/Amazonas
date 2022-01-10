@@ -1,0 +1,11 @@
+.contenedorPedidos{
+    margin: 20px;
+}
+
+.subContenedorPedidos{
+    background-color: #242F3E;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 10px 20px;
+    color: white;
+}

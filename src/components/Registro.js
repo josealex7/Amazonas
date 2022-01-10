@@ -17,6 +17,7 @@ import {TextField,
 } from '@mui/material'
 import '../styles/style.css'
 import '../styles/login.css'
+import {ImgLogo} from '../styles/NavBarDos.elements'
 
 export const Registro = () => {
 
@@ -72,14 +73,19 @@ export const Registro = () => {
         <div className='contenedorPrincipal'>
         <div className='contenedorForm'>
             <form onSubmit={handleRegistro}>
-                <Typography variant="h5" align={'center'} sx={{ mb   : 3 }} className='tituloLogin'>Registrate gratis en FireWork </Typography>
-
+                <div className='contenedor-logo-login'>
+                    <Link to="/" className='links-amazon'>
+                        <ImgLogo  src='https://res.cloudinary.com/dxnn5sbsz/image/upload/v1641399517/amazonas/amazon-logo-2_f9hwav.png'/>
+                    </Link>
+                </div>
+                <Typography variant="h5" align={'center'} sx={{ mb   : 3 }} className='tituloLogin'>Registrate gratis en Amazonas </Typography>
                 <TextField sx={{ mb:2 ,width: '100%' }} id="filled-basic" label="Nombre  " variant="outlined" required 
                         type="text"
                         placeholder="Ingrese su nombre"
                         name="nombre"
                         value={nombre}
                         onChange={handleInputChange}
+                        color='warning'
                     />
 
                 <TextField sx={{ mb:2 , width: '100%' }} id="filled-basic" label="Correo" variant="outlined" required 
@@ -88,10 +94,11 @@ export const Registro = () => {
                         name="email"
                         value={email}
                         onChange={handleInputChange}
+                        color='warning'
                     />
 
-                    <FormControl sx={{ mb   : 3, width: '100%' }} variant="outlined" required>
-                        <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
+                    <FormControl sx={{ mb   : 3, width: '100%' }} variant="outlined" color='warning' required>
+                        <InputLabel htmlFor="outlined-adornment-password" color='warning'>Contraseña</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password"
                                 type={valuesP.showPassword ? 'text' : 'password'}
@@ -114,8 +121,8 @@ export const Registro = () => {
                             />
                     </FormControl>
 
-                    <FormControl sx={{ mb   : 3, width: '100%' }} variant="outlined" required>
-                        <InputLabel htmlFor="outlined-adornment-password">Contraseña</InputLabel>
+                    <FormControl sx={{ mb   : 3, width: '100%' }} variant="outlined" color='warning' required>
+                        <InputLabel htmlFor="outlined-adornment-password" color='warning'>Contraseña</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password"
                                 type={valuesP.showPassword ? 'text' : 'password'}
@@ -138,7 +145,7 @@ export const Registro = () => {
                             />
                     </FormControl>
 
-                <Button variant="contained" type="submit" size="large" sx={{ mb   : 3, width: '100%' }} style={{backgroundColor:"#5C7AEA"}}>Registrarse</Button>
+                <Button variant="contained" type="submit" size="large" sx={{ mb   : 3, width: '100%' }} style={{backgroundColor:"#E19C2B"}}>Registrarse</Button>
                 <Typography variant="h6" align={'center'}  sx={{ mb   : 3 }}>
                     ¡Tambien puedes registrarte con Google o Facebook!
                 </Typography>

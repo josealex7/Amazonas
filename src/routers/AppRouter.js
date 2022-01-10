@@ -13,6 +13,8 @@ import { getAuth,onAuthStateChanged } from "firebase/auth";
 import Footer from '../components/Footer';
 import HomeUno from "../components/HomeUno";
 import NavbarAmazon from "../components/NavbarAmazon";
+import { Employees } from "../components/Employees";
+import Categoria from "../components/Categoria";
 
 export default function AppRouter() {
 
@@ -51,14 +53,20 @@ if(checking){
                 <Route path="/" element={
                             <HomeUno/>
                     } />
-            
+
+                <Route path="/employees" element={
+                            <Employees/> 
+                    } />
+
+                <Route path="/categoria" element={
+                            <Categoria/> 
+                    } />
+
                 <Route path="/login" element={
                         <PublicRoute isAuthenticated={isLoggedIn}>  
                             <Login/> 
                         </PublicRoute>
                     } />
-
-
 
                 <Route path="/registro" element={
                         <PublicRoute isAuthenticated={isLoggedIn}>

@@ -12,13 +12,14 @@ const User = () => {
 
     const datosUser = () =>{
         if (user !== null) {
-            setValue({
-                "name":user.displayName,
-                "email":user.email,
-                "photoURL":user.photoURL,
-                "emailVerified":user.emailVerified,
-                "uid":user.uid
-            })
+            
+                setValue({
+                    "name":user.displayName,
+                    "email":user.email,
+                    "photoURL":user.photoURL,
+                    "emailVerified":user.emailVerified,
+                    "uid":user.uid
+                })
         }
     }
 

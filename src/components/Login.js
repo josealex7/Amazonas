@@ -78,7 +78,6 @@ function Login() {
                     </Link>
                 </div>
                 <div>
-                    
                     <TextField sx={{  width: '100%' }} id="filled-basic" label="Correo" variant="outlined" required 
                         type="email"
                         placeholder="Enter email"
