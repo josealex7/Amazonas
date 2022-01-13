@@ -19,34 +19,34 @@ export const Employees = () => {
         dispatch(listEmployeeAsync())
      }, [])
 
-    const formik = useFormik({
-        initialValues: {
-            url: "",
-            nombre: "",
-            correo: "",
-            descripcion: ""
-        },
-        onSubmit: (data) => {
-            dispatch(registerEmployeeAsync(data))
-        },
+    // const formik = useFormik({
+    //     initialValues: {
+    //         url: "",
+    //         nombre: "",
+    //         correo: "",
+    //         descripcion: ""
+    //     },
+    //     onSubmit: (data) => {
+    //         dispatch(registerEmployeeAsync(data))
+    //     },
 
-    })
+    // })
 
-    const handlePictureClick = () => {
-        document.querySelector('#fileSelector').click();
-    }
+    // const handlePictureClick = () => {
+    //     document.querySelector('#fileSelector').click();
+    // }
 
-    const handleFileChanged = (e) => {
-        const file = e.target.files[0];
-        fileUpload(file)
-            .then(response => {
-                formik.initialValues.url = response
-                console.log(response);
-            })
-            .catch(error => {
-                console.log(error.message);
-            })
-    }
+    // const handleFileChanged = (e) => {
+    //     const file = e.target.files[0];
+    //     fileUpload(file)
+    //         .then(response => {
+    //             formik.initialValues.url = response
+    //             console.log(response);
+    //         })
+    //         .catch(error => {
+    //             console.log(error.message);
+    //         })
+    // }
 
 
  
@@ -54,9 +54,6 @@ export const Employees = () => {
     return (
         <div>
             <div className="container mt-5">
-            <h1>Hola</h1>
-
-                
                 <hr />
                 <div className="row">
                 

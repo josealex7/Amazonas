@@ -11,6 +11,11 @@
     font-weight: bold;
 }
 
+.linksSub{
+    color: white;
+    text-decoration: none;
+}
+
 .navbar-principal ul{
     display: flex;
     margin: 5px;
@@ -33,6 +38,7 @@
     margin: 3px 0px;
     font-weight: bold;
     font-size: 14px;
+    max-width: 170px;
 }
 
 .bold-label{
@@ -62,3 +68,16 @@
     padding: 6px 20px;
 }
 
+.textoTodo{
+    padding-left: 5px;
+    padding-top: 10px;
+    position: relative;
+    bottom: 5px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.labelDireccion{
+    font-size: 12px;
+    font-weight: none;
+}

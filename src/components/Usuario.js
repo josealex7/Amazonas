@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { logout } from '../actions/actionLogin';
@@ -8,6 +8,9 @@ import { Typography } from '@mui/material';
 import '../styles/Usuario.css'
 
 const Usuario = () => {
+
+    const componentDidMount =()=> 
+    { document.title = 'Usuario'}
 
     const useUser = User();
 
@@ -19,6 +22,9 @@ const Usuario = () => {
         dispatch(logout())
         navigate("/login")
     }
+    useEffect(() => {
+        componentDidMount()
+    }, [])
 
     
     return (

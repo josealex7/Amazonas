@@ -1,25 +1,58 @@
-import React from 'react'
-import { ContainerPrincipal, LogoContainer, ContainerButtons, Button1, Button2, ImgLogo } from "../styles/NavBarDos.elements";
-import { Link } from 'react-router-dom'
-import BarraBusqueda from './BarraBusqueda'
-import '../styles/NavbarAmazon.css'
+import React, {useState} from 'react'
+import {  ImgLogo } from "../styles/NavBarDos.elements";
+import { Link } from 'react-router-dom';
+import BarraBusqueda from './BarraBusqueda';
+import '../styles/NavbarAmazon.css';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import User from '../hooks/User';
 import UseLocation from '../hooks/UseLocation';
 import { google } from 'google-maps';
+import { useCategoria } from '../hooks/useCaregoria';
+import {guardarDatos} from '../localStorage/localStorage';
+
 
 const NavbarAmazon = () => {
 
-    const [address, getAdd] = UseLocation();
+    // const [guardarNum] = useCategoria()
+
+    // const subscribe=(numero) => {
+    //     guardarNum(numero)
+    // }
+
+    
+
+    // const [address, getAdd] = UseLocation();
 
     const useUser = User();
 
-    const getAddress= () =>{
-        getAdd()
-        let miDireccion = new google.maps.LatLng(address.latitude, address.longitude);
-        console.log(miDireccion)
-    }
+    // const getAddress= () =>{
+    //     getAdd()
+    //     let miDireccion = new google.maps.LatLng(address.latitude, address.longitude);
+    //     console.log(miDireccion)
+    // }
+
+    
+
+    let url = '';
+
+    const [ubicacion, setUbicacion] = useState('')
+
+    const getCoordenadas = () => {
+        //watchPosition
+        navigator.geolocation.getCurrentPosition(position => {
+         const { latitude, longitude } = position.coords;
+         url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&key=AIzaSyDvS3_rBwM7RJYjDOnPzquTpJVlskDs7nI';
+         getUbicacion(url);
+       });
+     }
+
+    const getUbicacion = async(endpoint) => {
+        const resp = await fetch(endpoint);
+        const {results} = await resp.json();
+        setUbicacion(results[0].formatted_address)
+      }
+ 
 
     return (
         <div>
@@ -33,18 +66,15 @@ const NavbarAmazon = () => {
                     <li>
                         <div>
                             <div>
-                                <label>Hola</label>
-                                <button onClick={getAddress}>
-                                    <div className='contenedor-direccion'>
-                                        <img src="https://img.icons8.com/material/24/FFFFFF/worldwide-location--v1.png"/>
-                                        <label> {
-                                                address.latitude!==0 && address.longitude!==0? 
-                                                address.longitude + " - "+address.latitude:
-                                                "Elige tu dirección"
-                                                }
-                                        </label>
-                                    </div>
-                                </button>
+                                <div className='contenedor-direccion' onClick={getCoordenadas}>
+                                    <img src="https://img.icons8.com/material/24/FFFFFF/worldwide-location--v1.png"/>
+                                    <label className='labelDireccion'> {
+                                            ubicacion!=''? 
+                                            ubicacion:
+                                            "Elige tu dirección"
+                                            }
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -71,22 +101,29 @@ const NavbarAmazon = () => {
             </header>
             <div className='subMenu'>
                 <ul>
-                    <li >
-                    <MenuIcon />
-                        Todo
+                    <li>
+                        <Link to="/categoria/1" className='linksSub'>
+                            <MenuIcon />
+                            <label className='textoTodo'>Todo</label>
+                        </Link>
                     </li>
                     <li>
-                        Los Más Vendidos
+                        <Link to="/categoria/2" className='linksSub'>
+                            Los Más Vendidos
+                        </Link>
                     </li>
                     <li>
-                        Cómputo y Tabletas
+                        <Link to="/categoria/4" className='linksSub'>
+                            Cómputo y Tabletas
+                        </Link>
                     </li>
                     <li>
-                        Los Más Regalados
+                        <Link to="/categoria/3" className='linksSub'>
+                            Los Más Regalados
+                        </Link>
                     </li>
                 </ul>
             </div>
-            
         </div>
     )
 }

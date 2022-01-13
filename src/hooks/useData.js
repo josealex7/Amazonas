@@ -7,7 +7,7 @@ export const useData = () =>{
     
 
     const { employees } = useSelector(store => store.employee);
-
+    
     const masVendidos = () =>{
         employees.sort(function (a, b){
             return (b.ventas - a.ventas)

@@ -1,11 +1,18 @@
-export const guardarDatos = (state) => {
-    localStorage.setItem('categoria',JSON.stringify(state))
+export const guardarDatos = (producto) => {
+    let arrayCarrito=[];
+    if(localStorage.getItem('arrayCarrito')){
+        arrayCarrito=JSON.parse(localStorage.getItem('arrayCarrito'))
+    }
+    arrayCarrito.push(
+        producto
+    )
+    localStorage.setItem('arrayCarrito',JSON.stringify(arrayCarrito))
 }
 
 export const obtenerDatos = () => {
-    const categoriaNum = localStorage.getItem('categoria');
-    if(categoriaNum===null){
+    const arrayCarrito = localStorage.getItem('arrayCarrito');
+    if(arrayCarrito===null){
         return undefined
     }
-    return JSON.parse(categoriaNum)
+    return JSON.parse(arrayCarrito)
 }

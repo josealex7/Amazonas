@@ -34,8 +34,10 @@ export const listEmployeeAsync = () => {
         const querySnapshot = await getDocs(collection(db, "productos"));
         const productos = [];
         querySnapshot.forEach((doc) => {
+            let data = doc.data()
+            data['id']=doc.id
             productos.push({
-                ...doc.data()
+                ...data
             })
         });
         dispatch(listSync(productos));

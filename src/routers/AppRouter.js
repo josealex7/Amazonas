@@ -15,6 +15,7 @@ import HomeUno from "../components/HomeUno";
 import NavbarAmazon from "../components/NavbarAmazon";
 import { Employees } from "../components/Employees";
 import Categoria from "../components/Categoria";
+import Detalle from "../components/Detalle";
 
 export default function AppRouter() {
 
@@ -54,11 +55,15 @@ if(checking){
                             <HomeUno/>
                     } />
 
-                <Route path="/employees" element={
-                            <Employees/> 
+                <Route path="/detalle/:id" element={
+                            <Detalle/>
                     } />
 
-                <Route path="/categoria" element={
+                {/* <Route path="/categoria" element={
+                            <Employees/> 
+                    } /> */}
+
+                <Route path="/categoria/:id" element={
                             <Categoria/> 
                     } />
 

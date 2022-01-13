@@ -1,0 +1,157 @@
+.divDetallePrincipal{
+    padding: 30px;
+    
+}
+
+.divSubDetalle{
+    display: inline-flex;
+    width: 100%;
+}
+
+.imagenesDetalle{
+    display: inline-flex;
+    position: sticky;
+    top: 20px;
+    height: 420px;
+}
+
+.imagenesProduct{
+    width: 100px;
+    justify-content: center;
+}
+
+.imagenIndividual{
+    width: 60px;
+    height: 50px;
+    border: 1px solid black;
+    margin: 5px 0px;
+    cursor: pointer;
+    object-fit:fill;
+}
+
+.imagenIndividual:hover{
+    border: 1px solid rgb(255, 166, 0);
+}
+
+.imagenPrincipalProduct{
+    display: inline-flex;
+    margin: 0px 20px;
+    margin-left: 0px;
+}
+
+.imagenPrincipalProduct img{
+    object-fit: fill;
+    width: 520px;
+    height: 420px;
+}
+
+.informacionProducto{
+    width: 700px;
+}
+
+.marcaProduct{
+    color: #0E7184;
+    
+}
+
+.calificacionE{
+    padding-bottom: 10px;
+}
+
+.numeroCalificacionD{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.labelPrecio{
+    color: rgb(204, 27, 27);
+    font-size: 22px;
+}
+
+.envioGratis{
+    font-weight: bold;
+    padding: 0px 7px;
+}
+
+.detallePrecio{
+    color: #0E7184;
+}
+
+.AgregarCarrito{
+    width: 300px;
+    height: 270px;
+    position: sticky;
+    top: 20px;
+    margin:10px 0px 10px 15px;
+    border: 2px solid rgb(184, 184, 184);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.envioGratisC{
+    font-weight: bold;
+}
+
+.botonCarrito{
+    display: flex;
+    align-items: center;
+    background-color: #F3D184;
+    padding: 4px 5px;
+    padding-left: 3px;
+    border-radius:10px 5px;
+    margin: 10px 0px;
+    border: 1px solid orange;
+    cursor: pointer;
+}
+
+.botonCarritoS{
+    background-color: #F0AD64;
+}
+
+.iconoCarrito{
+    cursor: pointer;
+    background-color: rgb(102, 102, 102);
+    margin: 0px 5px;
+    padding: 0px 2px;
+    border-radius: 5px;
+    justify-content: left;
+}
+
+.textoCarrito{
+    cursor: pointer;
+    padding-left: 8px;
+    color: rgb(58, 58, 58);
+}
+
+.transaccion{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.mensajeCarrito{
+    color: rgb(161, 15, 15);
+    font-weight: bold;
+}
+
+.divRelacionadosPrincipal{
+    padding: 30px 10px;
+    margin-top: 20px;
+}
+
+.TituloRelacionados{
+    font-weight: bold;
+}
+
+.imagenCategoriaD{
+    width: 250px;
+}
+
+.textoCategoriaDe{
+    color: #0E7184;
+}
+
+.textoCategoriaD{
+    font-size: 18px;
+    color: rgb(175, 22, 22);
+}

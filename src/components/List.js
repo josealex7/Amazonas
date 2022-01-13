@@ -24,8 +24,6 @@ export const List = () => {
 
     const [masVendidos, masRegalados, computoTabletas, televisionVideo, audioSonido] = useData();
     
-    
-
     const devolverNew = () =>{
         let newArray=[]
         if(storageState.numero==1){
@@ -47,8 +45,6 @@ export const List = () => {
     useEffect(() => {
         devolverNew()
     }, [])
-
-
 
     return (
         <div>
@@ -99,11 +95,6 @@ export const List = () => {
                         }
                     </Grid>
             </Box>
-
-            <h1>Productos</h1>
-            <div>
-                
-            </div>
         </div>
     )
 }

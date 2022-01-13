@@ -1,0 +1,42 @@
+.selectCategoria{
+    padding: 20px;
+}
+
+.subSelectCategoria{
+    padding: 20px;
+}
+
+.tituloCategoria{
+    height: 120px;
+    overflow: hidden;
+}
+
+.calificacion{
+    text-align: left;
+    padding: 0px 20px;
+}
+
+.numeroCalificacion{
+    font-size: 19px;
+    padding: 0px 10px;
+}
+
+.radio1A{
+    color: orange;
+    font-size: 25px;
+}
+
+.radio1{
+    color: gray;
+    font-size: 25px;
+}
+
+.contenedorPrecio{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.textoCategoriaE{
+    color: gray;
+}

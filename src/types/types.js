@@ -10,13 +10,5 @@ export const typesEmpleoyees = {
     delete: 'Delete'
 }
 
-export const typesCategory = {
-    todo:'todo',
-    vendidos:'vendidos',
-    regalados:'regalados',
-    computo:'computo',
-    video:'video',
-    audio:'audio'
-}
 
 

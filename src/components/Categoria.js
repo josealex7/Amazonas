@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteEmployeeAsync } from '../actions/actionEmployees';
 import { useData } from '../hooks/useData';
-import { obtenerDatos } from "../localStorage/localStorage";
 import { experimentalStyled as styled ,Typography, Grid, Paper, Box } from '@mui/material';
 import {Link} from 'react-router-dom'
+import { listEmployeeAsync } from '../actions/actionEmployees';
+import '../styles/caregorias.css'
+import { useParams } from "react-router-dom";
+
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -12,98 +14,90 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
   }));
 
-export const Categoria = () => {
+export const Categoria = (props) => {
+    
+    const { id } = useParams();
 
-    const storageState = obtenerDatos();
+    const [titulo, setTitulo] = useState('Todo')
 
     const [arrayProduct, setarrayProduct] = useState(null)
 
     const dispatch = useDispatch();
 
     const { employees } = useSelector(store => store.employee);
-
+    
     const [masVendidos, masRegalados, computoTabletas, televisionVideo, audioSonido] = useData();
-    
-    
 
     const devolverNew = () =>{
         let newArray=[]
-        if(storageState.numero==1){
-            setarrayProduct(employees)
-        } else if(storageState.numero==2){
+        if(id==1){
+            setTitulo('Todos los productos')
+            newArray = employees
+        } else if(id==2){
+            setTitulo('Productos mas vendidos')
             newArray = masVendidos()
-        } else if(storageState.numero==3){
+        } else if(id==3){
+            setTitulo('Productos mas regalados')
             newArray = masRegalados()
-        } else if(storageState.numero==4){
+        } else if(id==4){
+            setTitulo('Computo y Tabletas')
             newArray = computoTabletas()
-        } else if(storageState.numero==5){
+        } else if(id==5){
+            setTitulo('Televisión y video')
             newArray = televisionVideo()
-        } else if(storageState.numero==6){
+        } else if(id==6){
+            setTitulo('Audio y sonido')
             newArray = audioSonido()
         }
         setarrayProduct(newArray)
     }
 
+    
+
     useEffect(() => {
-        devolverNew()
-    }, [])
+            dispatch(listEmployeeAsync())
+            devolverNew()
+    }, [id])
 
 
 
     return (
-        <div>
-            {/* <table className="table text-center mt-3">
-
-                <thead>
-                    <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        employees.map((e, i) => (
-                            <tr key={i}>
-                                <td><img src={e.url} width="50" height="50" /></td>
-                                <td>{e.descripcion}</td>
-                                <td>{e.nombre}</td>
-                                <td>{e.correo}</td>
-                                <input
-                                    value="Delete"
-                                    type="button"
-                                    className="btn btn-outline-dark"
-                                    onClick={() => dispatch(deleteEmployeeAsync(e.correo))}
-                                />
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table> */}
-
-            <Box sx={{ flexGrow: 1 }}>
+        <div className='selectCategoria'>
+            <Typography className='textoCategoria' variant='h3' textAlign={'left'} sx={{ mt:2, ml:3, mb:4}}>{titulo}</Typography>
+            <hr />
+            <div className='subSelectCategoria'>
+                <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                       { console.log('arrayProduct :>> ', arrayProduct)}
                         {
-                        arrayProduct?.map((e)=>(
-                        <Grid item xs={2} sm={4} md={4}>
-                            <Link to="/employees" className='links'>
-                                <Item>
+                        arrayProduct !== null ? arrayProduct.map((e)=>(
+                        <Grid item xs={2} sm={4} md={4} key={e.id}>
+                            <Link to={`/detalle/${e.id}`} className='links'>
+                                <Item >
                                     <img className='imagenCategoria' src={e.imagenes[0]}/>
-                                    <Typography className='textoCategoria' variant='h6' textAlign={'left'} sx={{ mb:3 }}>{e.nombre}</Typography>
+                                    <div className='tituloCategoria'>
+                                    <Typography className='textoCategoria' variant='h6' textAlign={'left'} sx={{ m:2 }}>{e.nombre}</Typography>
+                                    </div>
+                                    <div className="calificacion">
+                                        <label className={e.calificacion>1?'radio1A':'radio1'}>★</label>
+                                        <label className={e.calificacion>2?'radio1A':'radio1'}>★</label>
+                                        <label className={e.calificacion>3?'radio1A':'radio1'}>★</label>
+                                        <label className={e.calificacion>4?'radio1A':'radio1'}>★</label>
+                                        <label className={e.calificacion>=5?'radio1A':'radio1'}>★</label>
+                                        <label className='numeroCalificacion'>{e.calificacion}</label>
+                                    </div>
+                                    <div className='contenedorPrecio'>
+                                        <Typography className='textoCategoria' variant='h6' textAlign={'left'} sx={{ m:2 }}>COP $ {Intl.NumberFormat('es-DE').format(e.precio)}</Typography>
+                                        <Typography className='textoCategoriaE' variant='body1' textAlign={'left'} sx={{ m:2 }}>Entrega gratis</Typography>
+                                    </div>
                                 </Item>
                             </Link>
                         </Grid>
-                        ))
-                        }
+                        ) ) : <h1>Cargando ...</h1> }
                     </Grid>
-            </Box>
-
-            <h1>Productos</h1>
-            <div>
-                
+                </Box>
             </div>
+            <hr />
         </div>
     )
 }
