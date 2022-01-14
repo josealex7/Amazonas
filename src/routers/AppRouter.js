@@ -16,6 +16,7 @@ import NavbarAmazon from "../components/NavbarAmazon";
 import { Employees } from "../components/Employees";
 import Categoria from "../components/Categoria";
 import Detalle from "../components/Detalle";
+import Carrito from "../components/Carrito";
 
 export default function AppRouter() {
 
@@ -57,6 +58,10 @@ if(checking){
 
                 <Route path="/detalle/:id" element={
                             <Detalle/>
+                    } />
+
+                <Route path="/carrito" element={
+                            <Carrito/>
                     } />
 
                 {/* <Route path="/categoria" element={

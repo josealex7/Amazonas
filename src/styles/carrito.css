@@ -1,0 +1,105 @@
+.divPrincipalCarrito{
+    background-color: rgb(238, 238, 238);
+    padding: 30px 20px;
+    display: flex;
+}
+
+.divSubCarrito{
+    background-color: white;
+    padding: 20px;
+    width: 950px;
+}
+
+.vaciarCarrito{
+    color: #0E7184;
+    cursor: pointer;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.vaciarCarrito:hover{
+    color: rgb(209, 110, 17);
+    text-decoration: underline;
+}
+
+.contenedorProducto{
+    display: flex;
+    margin: 20px;
+}
+
+.textoNegrilla{
+    font-weight: bold;
+}
+
+.textoNegrillaS{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.imagenProducto{
+    width: 180px;
+    margin: 5px 20px;
+    object-fit: contain;
+}
+
+.carritoTexto{
+    width: 550px;
+    height: 66px;
+    overflow: hidden;
+}
+
+.carritoTextoD{
+
+}
+
+.textoNombre{
+    font-size: 19px;
+}
+
+.Carritoprecio{
+    text-align: right;
+}
+
+.textoVerdeDisponible{
+    color: green;
+}
+
+.Carritoprecio{
+    width: 200px;
+}
+
+.cantidadProducto{
+    margin-top: 15px;
+    width: 100px;
+}
+
+.botonAzulEliminar{
+    color: #0E7184;
+    position: relative;
+    top: 5px;
+    font-size: 20px;
+    left: 10px;
+    padding-left: 20px;
+    cursor: pointer;
+    
+}
+
+.botonAzulEliminar:hover{
+    color: #0d5b6b;
+    text-decoration: underline;
+}
+
+.divEliminar-Cantidad{
+    display: flex;
+    margin-top: 15px;
+}
+
+.divCarritoPagar{
+    width: 300px;
+    background-color: white;
+    margin-left: 25px;
+    padding: 20px 20px;
+    height: 160px;
+    position: sticky;
+    top: 20px;
+}

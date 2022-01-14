@@ -6,6 +6,7 @@ import '../styles/detalle.css'
 import Relacionados from './Relacionados';
 import { experimentalStyled as styled ,Typography, Grid, Paper, Box } from '@mui/material';
 import { guardarDatos } from '../localStorage/localStorage';
+import { AgregarCarrito} from '../actions/actionCarrito'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,6 +29,11 @@ const Detalle = () => {
     const { employees } = useSelector(store => store.employee);
 
     const hoy = new Date();
+
+    const AgregarCarritoD = (producto) =>{
+        producto['cantidad']=1
+        dispatch(AgregarCarrito(producto))
+    }
 
     function formatoFecha(fecha, formato,dias) {
         const map = {
@@ -134,7 +140,7 @@ const Detalle = () => {
                         <Typography variant='body2' className='mensajeCarrito' sx={{mb:2, mt:1}}>
                             Lo recibiras entre estas fechas 
                         </Typography>
-                        <div className='botonCarrito' onClick={()=>guardarDatos(arrayProduct)}>
+                        <div className='botonCarrito' onClick={()=>AgregarCarritoD(arrayProduct)}>
                             <div className='iconoCarrito'>
                                 <img src="https://img.icons8.com/material-outlined/24/FFFFFF/shopping-cart--v2.png"/>
                             </div>

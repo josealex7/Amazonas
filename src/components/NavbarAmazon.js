@@ -94,8 +94,10 @@ const NavbarAmazon = () => {
                         </Link>
                     </li>
                     <li>
-                        <img src="https://img.icons8.com/material-outlined/40/FFFFFF/shopping-cart--v1.png"/>
-                        <label className='bold-label'>Carrito</label>
+                        <Link to="/carrito" className='links'>
+                            <img src="https://img.icons8.com/material-outlined/40/FFFFFF/shopping-cart--v1.png"/>
+                            <label className='bold-label'>Carrito</label>
+                        </Link>
                     </li>
                 </ul>
             </header>
