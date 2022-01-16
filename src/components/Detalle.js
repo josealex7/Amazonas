@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { listEmployeeAsync } from '../actions/actionEmployees';
 import { useSelector, useDispatch } from 'react-redux';
 import '../styles/detalle.css'
-import Relacionados from './Relacionados';
 import { experimentalStyled as styled ,Typography, Grid, Paper, Box } from '@mui/material';
 import { guardarDatos } from '../localStorage/localStorage';
 import { AgregarCarrito} from '../actions/actionCarrito'
@@ -140,18 +139,22 @@ const Detalle = () => {
                         <Typography variant='body2' className='mensajeCarrito' sx={{mb:2, mt:1}}>
                             Lo recibiras entre estas fechas 
                         </Typography>
-                        <div className='botonCarrito' onClick={()=>AgregarCarritoD(arrayProduct)}>
-                            <div className='iconoCarrito'>
-                                <img src="https://img.icons8.com/material-outlined/24/FFFFFF/shopping-cart--v2.png"/>
+                        <Link to={`/agregado/${arrayProduct.id}`} className='links'>
+                            <div className='botonCarrito' onClick={()=>AgregarCarritoD(arrayProduct)}>
+                                <div className='iconoCarrito'>
+                                    <img src="https://img.icons8.com/material-outlined/24/FFFFFF/shopping-cart--v2.png"/>
+                                </div>
+                                <label className='textoCarrito'>Agregar al carrito</label>
                             </div>
-                            <label className='textoCarrito'>Agregar al carrito</label>
-                        </div>
-                        <div className='botonCarrito botonCarritoS'>
-                            <div className='iconoCarrito'>
-                            <img src="https://img.icons8.com/material-outlined/24/FFFFFF/circled-play.png"/>
+                        </Link>
+                        <Link to="/formulario" className='links'>
+                            <div className='botonCarrito botonCarritoS' onClick={()=>AgregarCarritoD(arrayProduct)}>
+                                <div className='iconoCarrito'>
+                                <img src="https://img.icons8.com/material-outlined/24/FFFFFF/circled-play.png"/>
+                                </div>
+                                <label className='textoCarrito'>Comprar ahora</label>
                             </div>
-                            <label className='textoCarrito'>Comprar ahora</label>
-                        </div>
+                        </Link>
                         <div className='transaccion'>
                             <label className='detallePrecio'> Transacción segura</label>
                         </div>

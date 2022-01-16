@@ -10,31 +10,16 @@ import UseLocation from '../hooks/UseLocation';
 import { google } from 'google-maps';
 import { useCategoria } from '../hooks/useCaregoria';
 import {guardarDatos} from '../localStorage/localStorage';
+import { useSelector } from 'react-redux';
 
 
 const NavbarAmazon = () => {
 
-    // const [guardarNum] = useCategoria()
-
-    // const subscribe=(numero) => {
-    //     guardarNum(numero)
-    // }
-
-    
-
-    // const [address, getAdd] = UseLocation();
-
     const useUser = User();
 
-    // const getAddress= () =>{
-    //     getAdd()
-    //     let miDireccion = new google.maps.LatLng(address.latitude, address.longitude);
-    //     console.log(miDireccion)
-    // }
-
-    
-
     let url = '';
+
+    const { carrito } = useSelector(store => store.carrito);
 
     const [ubicacion, setUbicacion] = useState('')
 
@@ -46,6 +31,14 @@ const NavbarAmazon = () => {
          getUbicacion(url);
        });
      }
+
+    const cantidadProduct = () =>{
+        let cantidad =0;
+        carrito?.forEach(element => {
+            cantidad += Number(element.cantidad);
+         });
+         return cantidad
+    }
 
     const getUbicacion = async(endpoint) => {
         const resp = await fetch(endpoint);
@@ -95,7 +88,10 @@ const NavbarAmazon = () => {
                     </li>
                     <li>
                         <Link to="/carrito" className='links'>
-                            <img src="https://img.icons8.com/material-outlined/40/FFFFFF/shopping-cart--v1.png"/>
+                            {cantidadProduct()!==0?
+                            <div className='cantidadNumCarrito'>{cantidadProduct()}</div>
+                            :<div></div>}
+                            <img src="https://img.icons8.com/material-rounded/45/FFFFFF/shopping-cart.png"/>
                             <label className='bold-label'>Carrito</label>
                         </Link>
                     </li>

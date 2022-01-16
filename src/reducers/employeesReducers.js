@@ -13,7 +13,6 @@ export const employeesReducers = (state = initialState, action) => {
                 employees: [action.payload]
             }
         case typesEmpleoyees.list:
-            
             return {
                 employees: [...action.payload]
             }

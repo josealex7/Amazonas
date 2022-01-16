@@ -23,3 +23,10 @@ export const ActualizarCarrito = (id, cantidad) => {
         }
     }
 }
+
+export const VaciarCarrito = () => {
+    return{
+        type: typesCarrito.vaciar,
+        payload: {}
+    }
+}

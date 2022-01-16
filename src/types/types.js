@@ -14,5 +14,11 @@ export const typesEmpleoyees = {
 export const typesCarrito = {
     agregar: 'Agregar',
     borrar: 'Borrar',
-    actualizar: 'Actualizar'
+    actualizar: 'Actualizar',
+    vaciar:'Vaciar'
+}
+
+export const typesCompras = {
+    agregarCompra: 'AgregarCompra',
+    listar: 'Listar'
 }

@@ -1,0 +1,39 @@
+.FormularioPago{
+    padding: 30px 60px;
+    background-color: rgb(236, 236, 236);
+}
+
+.subFormularioPago{
+    padding: 40px;
+    background-color: white ;
+
+}
+
+.divformularios{
+    max-width:600px;
+    display: inline-block;
+}
+
+.NegrillaF{
+    font-weight: bold;
+}
+
+.contenedorFormularioPago{
+    display: flex;
+}
+
+.divformularios2{
+    max-width:600px;
+    display: inline-block;
+    height: 250px;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    margin-left: 85px;
+    position: sticky;
+    top: 10px;
+}
+
+.imagenPagos{
+    width: 500px;
+}

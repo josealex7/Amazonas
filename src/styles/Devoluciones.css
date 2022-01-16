@@ -9,3 +9,24 @@
     padding: 10px 20px;
     color: white;
 }
+
+.textoNombreT{
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.imagenProductoDe{
+    width: 100px;
+    object-fit: cover;
+    margin: 10px;
+}
+
+.textoNombreP{
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.carritoTextoCompra{
+    height: 47px;
+    overflow: hidden;
+}

@@ -17,9 +17,9 @@ import { Employees } from "../components/Employees";
 import Categoria from "../components/Categoria";
 import Detalle from "../components/Detalle";
 import Carrito from "../components/Carrito";
+import Agregado from "../components/Agregado";
 
 export default function AppRouter() {
-
   const [checking, setChecking] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -27,26 +27,20 @@ export default function AppRouter() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if(user?.uid){
-         //console.log(user)
          setIsLoggedIn(true)
         }
         else{
          setIsLoggedIn(false)
         }
-
         setChecking(false)
     })
-
- 
 }, [setIsLoggedIn,setChecking])
-
 
 if(checking){
   return(
       <h1>Espere...</h1>
   )
 }
-
 
   return (
     <Router>
@@ -62,6 +56,10 @@ if(checking){
 
                 <Route path="/carrito" element={
                             <Carrito/>
+                    } />
+
+                <Route path="/agregado/:id" element={
+                            <Agregado/>
                     } />
 
                 {/* <Route path="/categoria" element={

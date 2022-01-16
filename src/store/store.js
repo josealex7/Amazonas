@@ -5,6 +5,7 @@ import { loginReducer } from '../reducers/loginReducer';
 import { registerReducer } from '../reducers/registerReducer';
 import { employeesReducers } from '../reducers/employeesReducers';
 import { carritoReducer } from '../reducers/carritoReducer';
+import { comprasReducer } from '../reducers/comprasReducer';
 
 const composeEnhancers = (typeof window !== 'undefined' && 
 window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
@@ -13,7 +14,8 @@ const reducers = combineReducers({
     login: loginReducer,
     register: registerReducer,
     employee: employeesReducers,
-    carrito:carritoReducer
+    carrito:carritoReducer,
+    compras: comprasReducer
 })
 
 const storageState = obtenerDatos();

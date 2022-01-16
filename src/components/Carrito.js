@@ -1,14 +1,20 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { BorrarCarrito, ActualizarCarrito } from '../actions/actionCarrito';
+import { BorrarCarrito, ActualizarCarrito, VaciarCarrito } from '../actions/actionCarrito';
 import { Button, TextField, Typography } from '@mui/material';
 import '../styles/carrito.css'
+import { Link } from "react-router-dom";
+
 
 const Carrito = () => {
     
     const dispatch = useDispatch();
 
     const { carrito } = useSelector(store => store.carrito);
+
+    const handleVaciar = () =>{
+        dispatch(VaciarCarrito())
+    }
 
     const handleBorrar = (id) => {
         dispatch(BorrarCarrito(id))
@@ -52,13 +58,13 @@ const Carrito = () => {
                :
                <div>
                    <Typography variant='h4'>Carrito</Typography>
-                   <label className='vaciarCarrito'>Anular la selección de todos los elementos</label>
+                   <Button className='vaciarCarrito' onClick={handleVaciar}>Anular la selección de todos los elementos</Button>
                    <hr/>
                     {carrito.map((e=>(
                         <div>
                             <div className='contenedorProducto'>
                                 <img src={e.imagenes[0]} className='imagenProducto'/>
-                                <div className='carritoTextoD'>
+                                <div>
                                     <div className='carritoTexto'>
                                         <Typography variant='h6'>
                                             <label className='textoNombre'>
@@ -113,7 +119,9 @@ const Carrito = () => {
                     Subtotal ({cantidadProduct()} producto{cantidadProduct()>1?'s':''}):
                     <label className='textoNegrillaS'>COP ${Subtotal()}</label>
                 </Typography>
-                <Button variant='contained' fullWidth sx={{mt:2}} color='warning'>Proceder al pago</Button>
+                <Link to="/formulario" className='links'>
+                    <Button variant='contained' fullWidth sx={{mt:2}} color='warning'>Proceder al pago</Button>
+                </Link>
             </div>
         </div>
     )

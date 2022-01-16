@@ -68,7 +68,6 @@ export const Categoria = (props) => {
             <div className='subSelectCategoria'>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                       { console.log('arrayProduct :>> ', arrayProduct)}
                         {
                         arrayProduct !== null ? arrayProduct.map((e)=>(
                         <Grid item xs={2} sm={4} md={4} key={e.id}>

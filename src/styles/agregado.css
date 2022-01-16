@@ -1,0 +1,24 @@
+.contenedorProductoA{
+    justify-content: center;
+    margin: 40px auto;
+}
+
+.divSubCarritoA{
+    align-items: center;
+
+}
+
+.imagenCheck{
+    position: relative;
+    top: 7px;
+    padding-right: 10px;
+}
+
+.carritoTextoA{
+    padding-top: 10px;
+    text-align: left;
+}
+
+.divCarritoPagarA{
+    height: 210px;
+}

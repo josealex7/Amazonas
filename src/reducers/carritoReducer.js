@@ -18,14 +18,10 @@ export const carritoReducer = (state = initialState, action) => {
         case typesCarrito.actualizar:
             let newArray = []
             state.carrito.forEach(e=>{
-                console.log('hola')
-                console.log(action.payload.cantidad)
                 if(e.id == action.payload.id){
-                    
                     let newObject = {}
                     e['cantidad'] = action.payload.cantidad
                     newObject=e;
-                    console.log(newObject)
                     newArray.push(newObject)
                 } else {
                     newArray.push(e)
@@ -35,7 +31,10 @@ export const carritoReducer = (state = initialState, action) => {
             return {
                 carrito: newArray
             }
-
+        case typesCarrito.vaciar:
+            return {
+                carrito: []
+            }
         default:
             return state;
     }
