@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import '../styles/homeUno.css'
 import { guardarDatos } from "../localStorage/localStorage";
 import { experimentalStyled as styled ,Typography, Grid, Paper, Box } from '@mui/material';
 import {Link} from 'react-router-dom'
 import { useCategoria } from '../hooks/useCaregoria';
+import { listEmployeeAsync } from '../actions/actionEmployees';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -17,13 +19,9 @@ const HomeUno = () => {
 
     const dispatch = useDispatch();
 
-    const { employees } = useSelector(store => store.employee);
-
-    // const [guardarNum] = useCategoria()
-
-    // const subscribe=(numero) => {
-    //     guardarNum(numero)
-    // }
+    useEffect(() => {
+        dispatch(listEmployeeAsync())
+    }, [])
 
     return (
         <div className='categoriasProduct'>

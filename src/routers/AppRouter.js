@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react";
 import {
+    // HashRouter
   BrowserRouter as Router,
   Routes,
   Route,
@@ -13,7 +14,6 @@ import { getAuth,onAuthStateChanged } from "firebase/auth";
 import Footer from '../components/Footer';
 import HomeUno from "../components/HomeUno";
 import NavbarAmazon from "../components/NavbarAmazon";
-import { Employees } from "../components/Employees";
 import Categoria from "../components/Categoria";
 import Detalle from "../components/Detalle";
 import Carrito from "../components/Carrito";
@@ -61,10 +61,6 @@ if(checking){
                 <Route path="/agregado/:id" element={
                             <Agregado/>
                     } />
-
-                {/* <Route path="/categoria" element={
-                            <Employees/> 
-                    } /> */}
 
                 <Route path="/categoria/:id" element={
                             <Categoria/> 

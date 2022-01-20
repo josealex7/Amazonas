@@ -4,7 +4,8 @@
 }
 
 .divSubDetalle{
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     width: 100%;
 }
 
@@ -12,7 +13,8 @@
     display: inline-flex;
     position: sticky;
     top: 20px;
-    height: 420px;
+    height: 400px;
+    z-index: 101;
 }
 
 .imagenesProduct{
@@ -37,12 +39,14 @@
     display: inline-flex;
     margin: 0px 20px;
     margin-left: 0px;
+    width: 520px;
+    max-height: 420px;
+    overflow: hidden;
 }
 
 .imagenPrincipalProduct img{
-    object-fit: fill;
-    width: 520px;
-    height: 420px;
+    object-fit: contain;
+    
 }
 
 .informacionProducto{
@@ -78,15 +82,26 @@
     color: #0E7184;
 }
 
+.contenedorBotones{
+    justify-content: center;
+    text-align: center;
+
+}
+
 .AgregarCarrito{
     width: 300px;
-    height: 270px;
+    height: 360px;
     position: sticky;
     top: 20px;
     margin:10px 0px 10px 15px;
+}
+
+.contenedorCarritoPago{
+    margin-top: 10px;
     border: 2px solid rgb(184, 184, 184);
     padding: 10px;
     border-radius: 10px;
+    z-index: 1;
 }
 
 .envioGratisC{

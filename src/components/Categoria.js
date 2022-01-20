@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useData } from '../hooks/useData';
-import { experimentalStyled as styled ,Typography, Grid, Paper, Box } from '@mui/material';
+import { 
+    experimentalStyled as styled,
+    Typography, 
+    Grid, 
+    Paper, 
+    Box 
+} from '@mui/material';
 import {Link} from 'react-router-dom'
 import { listEmployeeAsync } from '../actions/actionEmployees';
-import '../styles/caregorias.css'
 import { useParams } from "react-router-dom";
-
+import '../styles/caregorias.css'
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -78,10 +83,10 @@ export const Categoria = (props) => {
                                     <Typography className='textoCategoria' variant='h6' textAlign={'left'} sx={{ m:2 }}>{e.nombre}</Typography>
                                     </div>
                                     <div className="calificacion">
-                                        <label className={e.calificacion>1?'radio1A':'radio1'}>★</label>
-                                        <label className={e.calificacion>2?'radio1A':'radio1'}>★</label>
-                                        <label className={e.calificacion>3?'radio1A':'radio1'}>★</label>
-                                        <label className={e.calificacion>4?'radio1A':'radio1'}>★</label>
+                                        <label className={e.calificacion>=1?'radio1A':'radio1'}>★</label>
+                                        <label className={e.calificacion>=2?'radio1A':'radio1'}>★</label>
+                                        <label className={e.calificacion>=3?'radio1A':'radio1'}>★</label>
+                                        <label className={e.calificacion>=4?'radio1A':'radio1'}>★</label>
                                         <label className={e.calificacion>=5?'radio1A':'radio1'}>★</label>
                                         <label className='numeroCalificacion'>{e.calificacion}</label>
                                     </div>

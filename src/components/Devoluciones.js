@@ -11,22 +11,10 @@ const Devoluciones = () => {
 
     const useUser = User();
 
-    const [pedidos, setPedidos] = useState()
-
     const { compras } = useSelector(store => store.compras);
-
-    const filtrar = () =>{
-        const newArray = compras.filter(elemento => elemento.userId==useUser.uid)
-        setPedidos(newArray)
-    }
-
-    const Subtotal = () =>{
-        
-    }
 
     useEffect(() => {
         dispatch(ListarCompraAsync())
-        filtrar()
     }, [])
 
     return (
@@ -34,11 +22,11 @@ const Devoluciones = () => {
             <div className='subContenedorPedidos'>
                 <Typography variant='h4' textAlign={'left'} sx={{m:3}} className='h1-usuario'>Tus pedidos</Typography>
                 <Divider sx={{ m: 2.5 }}  orientation="horizontal" />
-                {pedidos==undefined || pedidos == null || pedidos.length ==0?
-                <Typography variant='h6' textAlign={'center'} sx={{m:2}} className='h1-usuario'>Tienes 0 pedidos</Typography>
-                :
-                <div>{pedidos?.map((e=>(
-                    <div>
+                <div>
+                {compras?.map(e => {
+                    if(e.userId==useUser.uid){
+                        return(
+                            <div>
                         <div className='contenedorProducto'>
                             <div>
                                 <div className='carritoTexto'>
@@ -97,9 +85,10 @@ const Devoluciones = () => {
                         </div>
                     <hr/>
                     </div>
-                    )))}</div>
+                        )
                     }
-
+                })}
+                </div>
                 <Divider sx={{ m: 2.5 }}  orientation="horizontal" />
                 <Typography variant='h4' textAlign={'left'} sx={{m:3}} className='h1-usuario'>Tus devoluciones</Typography>
                 <Divider sx={{ m: 2.5 }}  orientation="horizontal" />

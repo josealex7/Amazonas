@@ -1,0 +1,44 @@
+.textAgregar{
+    cursor: pointer;
+}
+
+.contenedorTituloImagenes{
+    text-align: center;
+}
+
+.contenedorTituloImagenes div{
+    border: 1px solid rgb(56, 56, 56);
+    display: inline-block;
+    margin: 2px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contenedorTituloImagenes img{
+    object-fit: contain;
+    width: 165px;
+    height: 132px;
+}
+
+
+
+.contenedirImagenEditar{
+    border: 1px solid rgb(56, 56, 56);
+    margin: 2px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.imagenEditar{
+    width: 165px;
+    height: 132px;
+    object-fit: contain;
+}
+
+.displayNone{
+    position: absolute;
+    border: 0px solid white;
+    display: none;
+    margin: 0px;
+    align-items: center;
+}

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { listEmployeeAsync } from '../actions/actionEmployees';
-import { experimentalStyled as styled ,Typography, Grid, Paper, Box, Button } from '@mui/material';
+import { 
+    experimentalStyled as styled,
+    Typography, 
+    Button 
+} from '@mui/material';
 import { Link, useParams } from "react-router-dom";
 import '../styles/agregado.css'
 import '../styles/carrito.css'

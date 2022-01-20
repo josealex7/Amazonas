@@ -1,30 +1,69 @@
 import  {typesEmpleoyees} from '../types/types';
 import { db } from "../firebase/firebaseConfig";
-import { addDoc,collection,getDocs,query,where,doc,deleteDoc} from "@firebase/firestore";
+import { addDoc,collection,getDocs,query,where,doc,deleteDoc, updateDoc,} from "@firebase/firestore";
+
+export const searchAsyn = (categoria) => {
+
+    return async(dispatch) => {
+       
+        const employeeCollections = collection(db,"productos");
+        const q = query(employeeCollections,where("categoria","==",categoria))
+        const datos = await getDocs(q);
+        //console.log(datos)
+        const productos = [];
+        datos.forEach((docu) => {
+            productos.push(docu.data())
+        }) 
+        console.log(productos)
+        dispatch(searchSync(productos))
+    }
+}
+
+
+export const searchSync = (employee) => {
+    return{
+        type: typesEmpleoyees.search,
+        payload: employee
+    }
+}
+
 
 //DELETE
 
-export const deleteEmployeeAsync = (email) =>{
+export const deleteEmployeeAsync = (id) =>{
     return async(dispatch) => {
-
-        const estCollection = collection(db,"empleados");
-        const q = query(estCollection,where("correo","==",email))
-       
-        const datos = await getDocs(q);
-        datos.forEach((docu) => {
-            deleteDoc(doc(db,"empleados",docu.id));
-        })
-        dispatch(deleteSync(email));
+        deleteDoc(doc(db, 'productos', id))
+        dispatch(deleteSync(id))
+        dispatch(listEmployeeAsync())
     }
 }
 
-export const deleteSync = (email) => {
+export const deleteSync = (id) => {
     return{
         type: typesEmpleoyees.delete,
-        payload: email
+        payload: id
     }
 }
 
+//Update
+
+export const updateEmployessAsync = (id, updateFields)=>{
+    return async(dispatch)=>{
+        updateDoc(doc(db, "productos", id), updateFields);
+        dispatch(updateSync(id, updateFields))
+        dispatch(listEmployeeAsync())
+    }
+}
+
+export const updateSync = (id, updateFields) => {
+    return{
+        type: typesEmpleoyees.delete,
+        payload: {
+            id,
+            updateFields
+        }
+    }
+}
 
 //READ
 
@@ -55,9 +94,9 @@ export const listSync = (employees) => {
 //CREATE
 
 export const registerEmployeeAsync = (newEmployee) => {
-
+    
     return(dispatch) => {
-
+        console.log(newEmployee)
         addDoc(collection(db,"productos"),newEmployee)
         .then(resp => {
             dispatch(registerEmployeeSync(newEmployee))

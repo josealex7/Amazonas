@@ -1,14 +1,14 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import DirectionsIcon from "@mui/icons-material/Directions";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
+import { 
+    Paper,
+    InputBase,
+    Divider,
+    IconButton,
+    TextField,
+    MenuItem
+ } from '@mui/material'
+ import SearchIcon from "@mui/icons-material/Search";
+
 
 const currencies = [
   {
@@ -30,6 +30,7 @@ const currencies = [
 ];
 
 export default function CustomizedInputBase() {
+
   const [currency, setCurrency] = React.useState("todos_los_departamentos");
 
   const handleChange = (event) => {

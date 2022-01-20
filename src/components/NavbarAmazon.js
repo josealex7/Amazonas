@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {  ImgLogo } from "../styles/NavBarDos.elements";
 import { Link } from 'react-router-dom';
 import BarraBusqueda from './BarraBusqueda';
@@ -6,14 +6,16 @@ import '../styles/NavbarAmazon.css';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import User from '../hooks/User';
-import UseLocation from '../hooks/UseLocation';
-import { google } from 'google-maps';
-import { useCategoria } from '../hooks/useCaregoria';
-import {guardarDatos} from '../localStorage/localStorage';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { listEmployeeAsync } from '../actions/actionEmployees';
+import AgregarProducto from './AgregarProducto';
+
 
 
 const NavbarAmazon = () => {
+
+    const dispatch = useDispatch();
+
 
     const useUser = User();
 
@@ -24,7 +26,6 @@ const NavbarAmazon = () => {
     const [ubicacion, setUbicacion] = useState('')
 
     const getCoordenadas = () => {
-        //watchPosition
         navigator.geolocation.getCurrentPosition(position => {
          const { latitude, longitude } = position.coords;
          url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&key=AIzaSyDvS3_rBwM7RJYjDOnPzquTpJVlskDs7nI';
@@ -46,6 +47,9 @@ const NavbarAmazon = () => {
         setUbicacion(results[0].formatted_address)
       }
  
+      useEffect(() => {
+        dispatch(listEmployeeAsync())
+      }, [useUser])
 
     return (
         <div>
@@ -119,6 +123,15 @@ const NavbarAmazon = () => {
                         <Link to="/categoria/3" className='linksSub'>
                             Los Más Regalados
                         </Link>
+                    </li>
+                    <li>
+                        {useUser.uid!==null && useUser.uid!==undefined?
+                        <div>
+                            <AgregarProducto/>
+                        </div>
+                        : ''    
+                        }
+                        
                     </li>
                 </ul>
             </div>

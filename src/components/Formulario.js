@@ -7,6 +7,9 @@ import User from '../hooks/User';
 import { AgregarCompraAsync } from '../actions/actionCompra';
 import { useDispatch, useSelector } from 'react-redux';
 import { VaciarCarrito } from '../actions/actionCarrito'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { useNavigate } from "react-router-dom"
 
 
 const Mes = [
@@ -118,6 +121,8 @@ const currencies = [
 
 const Formulario = () => {
 
+    const navigate = useNavigate();
+
     const useUser = User();
 
     const dispatch = useDispatch();
@@ -191,8 +196,14 @@ const Formulario = () => {
         dispatch(AgregarCompraAsync(data))
         .then(resp => {
           dispatch(VaciarCarrito())
-        }
-        )
+            Swal.fire(
+              'Compra realizada!',
+              'La compra se ha realizado de manera exitosa.',
+              'success'
+            ).then(
+                navigate('/devoluciones')
+            )
+          })
       },
 
   })

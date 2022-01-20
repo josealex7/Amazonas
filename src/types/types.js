@@ -7,7 +7,9 @@ export const types = {
 export const typesEmpleoyees = {
     register: 'Register',
     list: 'List',
-    delete: 'Delete'
+    delete: 'Delete',
+    update: 'Update',
+    search: 'Search'
 }
 
 

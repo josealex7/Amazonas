@@ -1,26 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from "react-router-dom";
-import { listEmployeeAsync } from '../actions/actionEmployees';
+import { listEmployeeAsync, deleteEmployeeAsync } from '../actions/actionEmployees';
 import { useSelector, useDispatch } from 'react-redux';
 import '../styles/detalle.css'
-import { experimentalStyled as styled ,Typography, Grid, Paper, Box } from '@mui/material';
-import { guardarDatos } from '../localStorage/localStorage';
+import { 
+    experimentalStyled as styled,
+    Typography, 
+    Grid, 
+    Paper, 
+    Box, 
+    Button 
+} from '@mui/material';
 import { AgregarCarrito} from '../actions/actionCarrito'
+import ReactImageMagnify from "react-image-magnify";
+import EditarProducto from './EditarProducto';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { useNavigate } from "react-router-dom"
+import User from '../hooks/User';
 
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(2),
     textAlign: 'center',
-  }));
-
+}));
 
 const Detalle = () => {
+
+    const navigate = useNavigate();
+
+    const useUser = User();
+
+    const MySwal = withReactContent(Swal)
 
     const [arrayProduct, setarrayProduct] = useState(null)
 
     const [arrayRelacionado, setArrayRelacionado] = useState(null)
     
+    const [imagen, setImagen] = useState()
+
     const { id } = useParams();
     
     const dispatch = useDispatch();
@@ -63,9 +82,40 @@ const Detalle = () => {
         setArrayRelacionado(arrayNew)
     }
 
+    const eliminarProduct = (id) =>{
+        MySwal.fire({
+            target:('form-modal'),
+            title: '¿Esta seguro de eliminar el producto?',
+            text: "Recuerde que esta desición no se puede revertir",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si estoy seguro!'
+            
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(deleteEmployeeAsync(id))
+            .then(response => {
+                Swal.fire(
+                    'Producto eliminado!',
+                    'Este producto ha sido eliminado de manera exitosa.',
+                    'success'
+                ).then(
+                    navigate('/')
+                )
+            })
+        }
+        })
+    }
+
     const producto =()=>{
         const newArray = employees.filter((element=>element.id==id))
         setarrayProduct(newArray[0])
+    }
+
+    const cambiarImagen =(element)=>{
+        setImagen(element)
     }
 
     useEffect(() => {
@@ -80,14 +130,39 @@ const Detalle = () => {
                 <div className='divSubDetalle'>
                     <div className='imagenesDetalle'>
                         <div className='imagenesProduct'>
+                            
                             {arrayProduct.imagenes.map((element => (
-                                <img src={element} className='imagenIndividual'/>    
+                                <img src={element} className='imagenIndividual' onClick={()=>cambiarImagen(element)}/>    
                             )))
                             }
                         </div>
-                        <div className='imagenPrincipalProduct'>
-                            <img src={arrayProduct.imagenes[0]}/>
-                        </div>
+                    <div className='imagenPrincipalProduct'>
+
+                        {imagen!==undefined?
+                        <ReactImageMagnify {...{
+                            smallImage: {
+                                alt: 'Wristwatch by Ted Baker London',
+                                isFluidWidth: true,
+                                src: imagen,
+                            },
+                            largeImage: {
+                                src: imagen,
+                                width: 1000,
+                                height: 1500
+                            }
+                        }} />:<ReactImageMagnify {...{
+                            smallImage: {
+                                alt: 'Wristwatch by Ted Baker London',
+                                isFluidWidth: true,
+                                src: arrayProduct.imagenes[0],
+                            },
+                            largeImage: {
+                                src: arrayProduct.imagenes[0],
+                                width: 1000,
+                                height: 1600
+                            }
+                        }} />}
+                    </div>
                     </div>
                     <div className='informacionProducto'>
                         <Typography variant='h6' style={{fontWeight:'bold'}}>{arrayProduct.nombre}</Typography>
@@ -126,7 +201,19 @@ const Detalle = () => {
                             <Typography variant='body1' sx={{mb:1, mt:1}}>-{element}</Typography>
                         )))}
                     </div>
+
+                    {/* {Esta es la opción de agregar carrito} */}
                     <div className='AgregarCarrito'>
+                        {
+                            useUser.name!==undefined?
+                            <div className='contenedorBotones'>
+                                <EditarProducto prop={arrayProduct}/>
+                                <Button onClick={()=>eliminarProduct(arrayProduct.id)}  variant='contained' color='error' fullWidth sx={{mb:1}}>Eliminar</Button>
+                            </div>
+                            :
+                            ''
+                        } 
+                        <div className='contenedorCarritoPago'>
                         <label className='labelPrecio mensajeCarrito'>  ${Intl.NumberFormat('es-DE').format(arrayProduct.precio)}</label>
                         <Typography variant='body2' className='envioGratisC' sx={{mb:1, mt:1}}>
                             Envío GRATIS.
@@ -158,6 +245,7 @@ const Detalle = () => {
                         <div className='transaccion'>
                             <label className='detallePrecio'> Transacción segura</label>
                         </div>
+                        </div>
                     </div>
                 </div>:'Espere' 
                 }
@@ -165,6 +253,7 @@ const Detalle = () => {
                 {/* Esta es la opcion de productos relacionados */}
 
                 <div className="divRelacionadosPrincipal">
+                    <hr/>
                     <Typography variant="h4" className="TituloRelacionados" sx={{mb:5}}>Productos relacionados con este articulo</Typography>
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -177,10 +266,10 @@ const Detalle = () => {
                                         <Typography className='textoCategoria textoCategoriaDe' variant='h6' textAlign={'left'} sx={{ m:2 }}>{e.nombre}</Typography>
                                         </div>
                                         <div className="calificacion">
-                                            <label className={e.calificacion>1?'radio1A':'radio1'}>★</label>
-                                            <label className={e.calificacion>2?'radio1A':'radio1'}>★</label>
-                                            <label className={e.calificacion>3?'radio1A':'radio1'}>★</label>
-                                            <label className={e.calificacion>4?'radio1A':'radio1'}>★</label>
+                                            <label className={e.calificacion>=1?'radio1A':'radio1'}>★</label>
+                                            <label className={e.calificacion>=2?'radio1A':'radio1'}>★</label>
+                                            <label className={e.calificacion>=3?'radio1A':'radio1'}>★</label>
+                                            <label className={e.calificacion>=4?'radio1A':'radio1'}>★</label>
                                             <label className={e.calificacion>=5?'radio1A':'radio1'}>★</label>
                                             <label className='numeroCalificacion'>{e.calificacion}</label>
                                         </div>
