@@ -1,7 +1,6 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { BorrarCarrito, ActualizarCarrito, VaciarCarrito } from '../actions/actionCarrito';
-import { Button, TextField, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { Typography } from '@mui/material';
 import '../styles/carrito.css'
 import '../styles/busqueda.css'
 import { Link } from "react-router-dom";

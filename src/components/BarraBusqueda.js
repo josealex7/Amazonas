@@ -43,6 +43,7 @@ export default function CustomizedInputBase() {
   const [currency, setCurrency] = React.useState("todos_los_departamentos");
 
   const handleChange = (event) => {
+    setCurrency(event.target.value)
     if(event.target.value=='todos_los_departamentos'){
       dispatch(listEmployeeAsync())
       navigate('/busqueda')

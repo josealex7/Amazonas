@@ -254,7 +254,7 @@ const Detalle = () => {
 
                 <div className="divRelacionadosPrincipal">
                     <hr/>
-                    <Typography variant="h4" className="TituloRelacionados" sx={{mb:5}}>Productos relacionados con este articulo</Typography>
+                    <Typography variant="h4" className="TituloRelacionados" sx={{mb:5, mt:4}}>Productos relacionados con este articulo</Typography>
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                             {arrayRelacionado?.map((e=>(

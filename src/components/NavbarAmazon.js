@@ -24,8 +24,6 @@ const NavbarAmazon = () => {
 
     const { id, name } = useSelector(store => store.login);
 
-    console.log(id, name)
-
     const [ubicacion, setUbicacion] = useState('')
 
     const getCoordenadas = () => {
@@ -43,6 +41,8 @@ const NavbarAmazon = () => {
          });
          return cantidad
     }
+
+
 
     const getUbicacion = async(endpoint) => {
         const resp = await fetch(endpoint);
