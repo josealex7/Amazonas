@@ -1,0 +1,32 @@
+.divSubCarritoBusqueda{
+    width: 100%;
+}
+
+.carritoTextoBusqueda{
+    width: 100%;
+    height: fit-content;
+    margin-bottom: -8px;
+}
+
+.calificacionBusqueda{
+    padding-bottom: 0px;
+}
+
+.textoNombreBusqueda{
+    cursor: pointer;
+}
+
+.textoNombreBusqueda:hover{
+    color: rgb(223, 126, 0);
+}
+
+
+.imagenProductoBusqueda{
+    width: 250px;
+    max-height: 200px;
+}
+
+.linksBusqueda{
+    text-decoration: none;
+    color: black;
+}

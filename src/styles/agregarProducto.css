@@ -42,3 +42,23 @@
     margin: 0px;
     align-items: center;
 }
+
+.textAreaCreate{
+    font-size: 17px;
+    border: 0px;
+    border-bottom: 1px solid black;
+}
+
+.botonEliminarImagen{
+    color: white;
+    background-color: brown;
+    border: 1px solid rgb(110, 24, 24);
+    padding: 5px 8px;
+    margin-right: 4px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.botonEliminarImagen:hover{
+    background-color: rgb(231, 38, 38);
+}

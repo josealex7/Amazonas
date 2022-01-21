@@ -102,7 +102,7 @@ const AgregarProducto = () => {
           let variableID = 'TextFieldAcerca'+cantidadAcerca
           console.log(variableID)
           newDiv.innerHTML=`
-            <textarea  id="${variableID}" cols="69" rows="10" placeholder="Ingrese la información acerca del producto"></textarea>
+            <textarea  id="${variableID}" class="textAreaCreate" cols="55" rows="6" placeholder="Ingrese la información acerca del producto"></textarea>
           `;
           document.getElementById('ContenedorAcerca').appendChild(newDiv);
         setCantidadAcerca(cantidadAcerca+1)

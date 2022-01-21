@@ -117,6 +117,7 @@ const EditarProducto = (arrayProduct) => {
                     `
                     <div className='contenedirImagenEditar'>
                         <img className='imagenEditar' src='${response} '/>
+                        <button class='botonEliminarImagen'>Eliminar</button>
                     </div>
                     `                
             })
@@ -303,7 +304,7 @@ const EditarProducto = (arrayProduct) => {
                                     return (
                                         <div className='contenedirImagenEditar' id={e+'img'}>
                                             <img className='imagenEditar' src={e}/>
-                                            <Button onClick={()=>eliminarImagen(e)} color='error' variant='contained' className='botonEliminarImagen'>Eliminar</Button>
+                                            <button onClick={()=>eliminarImagen(e)} className='botonEliminarImagen'>Eliminar</button>
                                         </div>
                                     )
                                 })}

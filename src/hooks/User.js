@@ -1,10 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import { getAuth } from "firebase/auth";
-
-
+import { getAuth } from "firebase/auth";  
 
 const User = () => {
-
     const auth = getAuth();
     const user = auth.currentUser;
 
@@ -12,7 +9,6 @@ const User = () => {
 
     const datosUser = () =>{
         if (user !== null) {
-            
                 setValue({
                     "name":user.displayName,
                     "email":user.email,

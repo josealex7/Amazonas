@@ -18,10 +18,20 @@ import Categoria from "../components/Categoria";
 import Detalle from "../components/Detalle";
 import Carrito from "../components/Carrito";
 import Agregado from "../components/Agregado";
+import Busqueda from "../components/Busqueda";
+import Cookies from 'js-cookie';
+
 
 export default function AppRouter() {
   const [checking, setChecking] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const crearUserVacio = () =>{
+    Cookies.set('User', JSON.stringify([{
+        "name":'',
+        "uid":''
+    }]))
+  }
 
   useEffect(() => {
     const auth = getAuth();
@@ -34,6 +44,7 @@ export default function AppRouter() {
         }
         setChecking(false)
     })
+    crearUserVacio()
 }, [setIsLoggedIn,setChecking])
 
 if(checking){
@@ -56,6 +67,10 @@ if(checking){
 
                 <Route path="/carrito" element={
                             <Carrito/>
+                    } />
+
+                <Route path="/busqueda" element={
+                            <Busqueda/>
                     } />
 
                 <Route path="/agregado/:id" element={

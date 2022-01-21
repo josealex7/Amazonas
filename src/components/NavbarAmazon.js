@@ -11,7 +11,6 @@ import { listEmployeeAsync } from '../actions/actionEmployees';
 import AgregarProducto from './AgregarProducto';
 
 
-
 const NavbarAmazon = () => {
 
     const dispatch = useDispatch();
@@ -22,6 +21,10 @@ const NavbarAmazon = () => {
     let url = '';
 
     const { carrito } = useSelector(store => store.carrito);
+
+    const { id, name } = useSelector(store => store.login);
+
+    console.log(id, name)
 
     const [ubicacion, setUbicacion] = useState('')
 
@@ -49,7 +52,7 @@ const NavbarAmazon = () => {
  
       useEffect(() => {
         dispatch(listEmployeeAsync())
-      }, [useUser])
+      }, [])
 
     return (
         <div>
@@ -81,7 +84,7 @@ const NavbarAmazon = () => {
                     <li>
                         <Link to="/usuario" className='links'>
                             Hola, {
-                              useUser.name!==undefined?useUser.name:'identificate'
+                              name!==undefined?name:'identificate'
                             } 
                         </Link>
                     </li>
@@ -125,7 +128,7 @@ const NavbarAmazon = () => {
                         </Link>
                     </li>
                     <li>
-                        {useUser.uid!==null && useUser.uid!==undefined?
+                        {id!==undefined?    
                         <div>
                             <AgregarProducto/>
                         </div>

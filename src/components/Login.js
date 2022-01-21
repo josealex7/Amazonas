@@ -52,9 +52,6 @@ function Login() {
         event.preventDefault();
       };
 
-
-    
-
     const handleLogin = (e) => {
        e.preventDefault();
        dispatch(loginEmailPassword(email,passwordP));

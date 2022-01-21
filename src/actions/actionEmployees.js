@@ -4,17 +4,27 @@ import { addDoc,collection,getDocs,query,where,doc,deleteDoc, updateDoc,} from "
 
 export const searchAsyn = (categoria) => {
 
-    return async(dispatch) => {
-       
-        const employeeCollections = collection(db,"productos");
-        const q = query(employeeCollections,where("categoria","==",categoria))
-        const datos = await getDocs(q);
-        //console.log(datos)
+    return async (dispatch) => {
+        const querySnapshot = await getDocs(collection(db, "productos"));
         const productos = [];
-        datos.forEach((docu) => {
-            productos.push(docu.data())
-        }) 
-        console.log(productos)
+        querySnapshot.forEach((doc) => {
+            let data = doc.data()
+            if(Array.isArray(categoria)){
+            if(data.categoria[0]==categoria[0]){
+                data['id']=doc.id
+                productos.push({
+                    ...data
+                })
+            }} else {
+                let name = data.nombre.toLowerCase()
+                if(name.includes(categoria.toLowerCase())){
+                    data['id']=doc.id
+                    productos.push({
+                    ...data
+                    })
+                }
+            }
+        });
         dispatch(searchSync(productos))
     }
 }
@@ -96,7 +106,6 @@ export const listSync = (employees) => {
 export const registerEmployeeAsync = (newEmployee) => {
     
     return(dispatch) => {
-        console.log(newEmployee)
         addDoc(collection(db,"productos"),newEmployee)
         .then(resp => {
             dispatch(registerEmployeeSync(newEmployee))
@@ -106,7 +115,7 @@ export const registerEmployeeAsync = (newEmployee) => {
             console.log(error);
         })
     }
- }
+}
 
 export const registerEmployeeSync = (employee) => {
     return{

@@ -6,11 +6,10 @@ import { getAuth } from "firebase/auth";
 import User from '../hooks/User';
 import { Typography } from '@mui/material';
 import '../styles/Usuario.css'
+import Cookies from 'js-cookie';
+
 
 const Usuario = () => {
-
-    const componentDidMount =()=> 
-    { document.title = 'Usuario'}
 
     const useUser = User();
 
@@ -22,10 +21,6 @@ const Usuario = () => {
         dispatch(logout())
         navigate("/login")
     }
-    useEffect(() => {
-        componentDidMount()
-    }, [])
-
     
     return (
         <div className='Contenedor-principal-usuario'>
